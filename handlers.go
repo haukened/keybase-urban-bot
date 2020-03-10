@@ -30,6 +30,8 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		return
 	}
 
+	Debug(m.Content.TypeName)
+
 	if strings.HasPrefix(m.Content.Text.Body, fmt.Sprintf("@%s", b.k.Username)) {
 		// message is @me so do my function
 		words := strings.Fields(m.Content.Text.Body)
@@ -59,8 +61,9 @@ func (b *bot) convHandler(m chat1.ConvSummary) {
 }
 
 func (b *bot) walletHandler(m stellar1.PaymentDetailsLocal) {
-	log.Println("---[ wallet ]---")
-	log.Println(p(m))
+	if m.Summary.StatusSimplified == 3 {
+		log.Printf("Payment of %s Received from %s!!!!\n", m.Summary.AmountDescription, m.Summary.FromUsername)
+	}
 }
 
 func (b *bot) errHandler(m error) {

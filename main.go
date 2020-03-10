@@ -4,9 +4,9 @@ import (
 	"flag"
 	"log"
 	"os"
+	"strconv"
 
 	"samhofi.us/x/keybase"
-	//"samhofi.us/x/keybase/types/chat1"
 )
 
 var debug bool
@@ -25,24 +25,10 @@ func NewBot() *bot {
 	return &b
 }
 
-/*
-func (b *bot) SetOptions() {
-	channel := chat1.ChatChannel{
-		Name:        "keybase_git",
-		TopicName:   "general",
-		MembersType: keybase.TEAM,
-	}
-
-	b.opts = keybase.RunOptions{
-		FilterChannel: channel,
-	}
-}
-*/
-
 func (b *bot) Run(args []string) error {
-	flags := flag.NewFlagSet(args[0], flag.ExitOnError)
-	flags.BoolVar(&debug, "debug", false, "enables command debugging")
-	if err := flags.Parse(args[1:]); err != nil {
+	// parse the arguments
+	err := parseArgs(args)
+	if err != nil {
 		return err
 	}
 	//b.SetOptions()
@@ -59,4 +45,31 @@ func main() {
 		log.Printf("%s", err)
 		os.Exit(1)
 	}
+}
+
+func parseArgs(args []string) error {
+	// first check for command line flags
+	flags := flag.NewFlagSet(args[0], flag.ExitOnError)
+	flags.BoolVar(&debug, "debug", false, "enables command debugging")
+	if err := flags.Parse(args[1:]); err != nil {
+		return err
+	}
+
+	// then check the env vars
+	envDebug := os.Getenv("BOT_DEBUG")
+	if envDebug != "" {
+		ret, err := strconv.ParseBool(envDebug)
+		if err != nil {
+			return err
+		}
+
+		// if flag was false but env is true, set debug
+		if debug == false && ret == true {
+			debug = true
+		}
+	}
+	if debug {
+		log.Println("Debugging enabled.")
+	}
+	return nil
 }
