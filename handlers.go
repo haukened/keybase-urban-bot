@@ -33,7 +33,7 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 	if strings.HasPrefix(m.Content.Text.Body, fmt.Sprintf("@%s", b.k.Username)) {
 		// message is @me so do my function
 		words := strings.Fields(m.Content.Text.Body)
-		b.Urban(m.ConvID, m.Id, words)
+		b.Urban(m.ConvID, m.Id, words, m.Channel.MembersType)
 	}
 
 	if strings.HasPrefix(m.Content.Text.Body, "!") {
@@ -46,7 +46,7 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		case "urban":
 			fallthrough
 		case "urbandictionary":
-			b.Urban(m.ConvID, m.Id, words)
+			b.Urban(m.ConvID, m.Id, words, m.Channel.MembersType)
 		default:
 			return
 		}

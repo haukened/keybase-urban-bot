@@ -14,7 +14,7 @@ func (b *bot) Ping(convid chat1.ConvIDStr) {
 	b.k.SendMessageByConvID(convid, "Pong!")
 }
 
-func (b *bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string) {
+func (b *bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
 	Debug("Urban received in %s", convid)
 	if len(message[1:]) == 0 {
 		// no arguments to command
@@ -26,6 +26,12 @@ func (b *bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []strin
 		b.k.ReactByConvID(convid, mid, "Error.")
 		log.Printf("%s\n", err)
 	}
-	dur := 10 * time.Minute
-	b.k.SendEphemeralByConvID(convid, dur, "`Definition:` %s\n`Usage:` %s", result.Definition, result.Example)
+	if membersType == "impteamnative" {
+		// its a PM so just respond
+		b.k.SendMessageByConvID(convid, "`Definition:` %s\n`Usage:` %s", result.Definition, result.Example)
+	} else {
+		// its a team so send with a 10 min fuse in case its REALLY BAD
+		dur := 10 * time.Minute
+		b.k.SendEphemeralByConvID(convid, dur, "`Definition:` %s\n`Usage:` %s", result.Definition, result.Example)
+	}
 }
