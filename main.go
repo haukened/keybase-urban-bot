@@ -1,10 +1,8 @@
 package main
 
 import (
-	"flag"
 	"log"
 	"os"
-	"strconv"
 
 	"samhofi.us/x/keybase"
 )

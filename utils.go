@@ -1,7 +1,10 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"os"
+	"strconv"
 )
 
 func Debug(s string, a ...interface{}) {
