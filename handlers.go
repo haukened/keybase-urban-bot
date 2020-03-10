@@ -30,8 +30,6 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		return
 	}
 
-	Debug(m.Content.TypeName)
-
 	if strings.HasPrefix(m.Content.Text.Body, fmt.Sprintf("@%s", b.k.Username)) {
 		// message is @me so do my function
 		words := strings.Fields(m.Content.Text.Body)
