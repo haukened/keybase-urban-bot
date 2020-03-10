@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"strings"
 
@@ -29,8 +30,26 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		return
 	}
 
-	if strings.HasPrefix(m.Content.Text.Body, "!ping") {
-		b.Ping(m.ConvID, m.Id)
+	if strings.HasPrefix(m.Content.Text.Body, fmt.Sprintf("@%s", b.k.Username)) {
+		// message is @me so do my function
+		words := strings.Fields(m.Content.Text.Body)
+		b.Urban(m.ConvID, m.Id, words)
+	}
+
+	if strings.HasPrefix(m.Content.Text.Body, "!") {
+		// its a command for me, iterate through extended commands
+		words := strings.Fields(m.Content.Text.Body)
+		thisCommand := strings.ToLower(strings.Replace(words[0], "!", "", 1))
+		switch thisCommand {
+		case "ping":
+			b.Ping(m.ConvID)
+		case "urban":
+			fallthrough
+		case "urbandictionary":
+			b.Urban(m.ConvID, m.Id, words)
+		default:
+			return
+		}
 	}
 }
 

@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"samhofi.us/x/keybase"
-	"samhofi.us/x/keybase/types/chat1"
+	//"samhofi.us/x/keybase/types/chat1"
 )
 
 var debug bool
@@ -22,10 +22,10 @@ func NewBot() *bot {
 	b.k = keybase.NewKeybase()
 	b.handlers = keybase.Handlers{}
 	b.opts = keybase.RunOptions{}
-
 	return &b
 }
 
+/*
 func (b *bot) SetOptions() {
 	channel := chat1.ChatChannel{
 		Name:        "keybase_git",
@@ -37,6 +37,7 @@ func (b *bot) SetOptions() {
 		FilterChannel: channel,
 	}
 }
+*/
 
 func (b *bot) Run(args []string) error {
 	flags := flag.NewFlagSet(args[0], flag.ExitOnError)
@@ -44,7 +45,7 @@ func (b *bot) Run(args []string) error {
 	if err := flags.Parse(args[1:]); err != nil {
 		return err
 	}
-	b.SetOptions()
+	//b.SetOptions()
 	b.RegisterHandlers()
 
 	log.Println("Starting...")
