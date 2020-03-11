@@ -7,12 +7,14 @@ import (
 	"strconv"
 )
 
+// Debug provides printing only when --debug flag is set or BOT_DEBUG env var is set
 func Debug(s string, a ...interface{}) {
 	if debug {
 		log.Printf(s, a...)
 	}
 }
 
+// parseArgs parses command line and environment args and sets globals
 func parseArgs(args []string) error {
 	// first check for command line flags
 	flags := flag.NewFlagSet(args[0], flag.ExitOnError)

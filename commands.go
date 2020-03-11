@@ -9,12 +9,14 @@ import (
 	"samhofi.us/x/keybase/types/chat1"
 )
 
-func (b *bot) Ping(convid chat1.ConvIDStr) {
+// Ping sends Pong! as a reply
+func (b *Bot) Ping(convid chat1.ConvIDStr) {
 	Debug("Ping received in %s", convid)
 	b.k.SendMessageByConvID(convid, "Pong!")
 }
 
-func (b *bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
+// Urban performs and returns an urbandictionary.com lookup
+func (b *Bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
 	Debug("Urban received in %s", convid)
 	if len(message[1:]) == 0 {
 		// no arguments to command
