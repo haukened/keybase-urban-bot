@@ -82,8 +82,13 @@ func (b *bot) convHandler(m chat1.ConvSummary) {
 
 // this handles wallet events, like when someone send you money in chat
 func (b *bot) walletHandler(m stellar1.PaymentDetailsLocal) {
-	if m.Summary.StatusSimplified > 0 {
-		log.Printf("%s Payment of %s Received from %s txn %s !!!!\n", m.Summary.StatusDescription, m.Summary.AmountDescription, m.Summary.FromUsername, m.Summary.Id)
+	// if the payment is successful
+	if m.Summary.StatusSimplified == 3 {
+		// get the reply info and see if it exists
+		replyInfo := b.payments[m.Summary.Id]
+		if replyInfo.convID != "" {
+			b.k.ReplyByConvID(replyInfo.convID, replyInfo.msgID, "Thank you so much!  I'll use this to offset my hosting costs!")
+		}
 	}
 }
 
