@@ -10,13 +10,13 @@ import (
 )
 
 // Ping sends Pong! as a reply
-func (b *Bot) Ping(convid chat1.ConvIDStr) {
+func (b *bot) ping(convid chat1.ConvIDStr) {
 	Debug("Ping received in %s", convid)
 	b.k.SendMessageByConvID(convid, "Pong!")
 }
 
 // Urban performs and returns an urbandictionary.com lookup
-func (b *Bot) Urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
+func (b *bot) urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
 	Debug("Urban received in %s", convid)
 	if len(message[1:]) == 0 {
 		// no arguments to command

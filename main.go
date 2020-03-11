@@ -47,7 +47,7 @@ func (b *bot) run(args []string) error {
 	b.registerHandlers()
 
 	log.Println("Starting...")
-	b.k.run(b.handlers, &b.opts)
+	b.k.Run(b.handlers, &b.opts)
 	return nil
 }
 

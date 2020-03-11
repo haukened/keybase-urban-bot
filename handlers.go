@@ -51,7 +51,7 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 	// if the message is @myusername just perform the default function
 	if strings.HasPrefix(m.Content.Text.Body, fmt.Sprintf("@%s", b.k.Username)) {
 		words := strings.Fields(m.Content.Text.Body)
-		b.Urban(m.ConvID, m.Id, words, m.Channel.MembersType)
+		b.urban(m.ConvID, m.Id, words, m.Channel.MembersType)
 	}
 	// its a command for me, iterate through extended commands
 	if strings.HasPrefix(m.Content.Text.Body, "!") {
@@ -62,11 +62,11 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		// decide if this is askind for extended commands
 		switch thisCommand {
 		case "ping":
-			b.Ping(m.ConvID)
+			b.ping(m.ConvID)
 		case "urban":
 			fallthrough
 		case "urbandictionary":
-			b.Urban(m.ConvID, m.Id, words, m.Channel.MembersType)
+			b.urban(m.ConvID, m.Id, words, m.Channel.MembersType)
 		default:
 			return
 		}
