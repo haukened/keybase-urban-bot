@@ -5,6 +5,8 @@ import (
 	"os"
 
 	"samhofi.us/x/keybase"
+	"samhofi.us/x/keybase/types/chat1"
+	"samhofi.us/x/keybase/types/stellar1"
 )
 
 // this global controls debug printing
@@ -15,6 +17,13 @@ type Bot struct {
 	k        *keybase.Keybase
 	handlers keybase.Handlers
 	opts     keybase.RunOptions
+	payments map[stellar1.PaymentID]botReply
+}
+
+// hold reply information when needed
+type botReply struct {
+	convID chat1.ConvIDStr
+	msgID  chat1.MessageID
 }
 
 // NewBot returns a new empty bot
@@ -23,6 +32,7 @@ func NewBot() *Bot {
 	b.k = keybase.NewKeybase()
 	b.handlers = keybase.Handlers{}
 	b.opts = keybase.RunOptions{}
+	b.payments = make(map[stellar1.PaymentID]botReply)
 	return &b
 }
 
