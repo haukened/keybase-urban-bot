@@ -1,3 +1,4 @@
+![Build](https://github.com/haukened/keybase-urban-bot/workflows/Build/badge.svg)
 # keybase-urban-bot
 An UrbanDictionary Bot for Keybase
 
