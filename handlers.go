@@ -12,7 +12,7 @@ import (
 )
 
 // RegisterHandlers is called by main to map these handler funcs to events
-func (b *Bot) RegisterHandlers() {
+func (b *bot) registerHandlers() {
 	chat := b.chatHandler
 	conv := b.convHandler
 	wallet := b.walletHandler
@@ -27,7 +27,7 @@ func (b *Bot) RegisterHandlers() {
 }
 
 // chatHandler should handle all messages coming from the chat
-func (b *Bot) chatHandler(m chat1.MsgSummary) {
+func (b *bot) chatHandler(m chat1.MsgSummary) {
 	// only handle text, we don't really care about attachments
 	if m.Content.TypeName != "text" {
 		return
@@ -75,20 +75,20 @@ func (b *Bot) chatHandler(m chat1.MsgSummary) {
 
 // handle conversations (this fires when a new conversation is initiated)
 // i.e. when someone opens a conversation to you but hasn't sent a message yet
-func (b *Bot) convHandler(m chat1.ConvSummary) {
+func (b *bot) convHandler(m chat1.ConvSummary) {
 	log.Println("---[ conv ]---")
 	log.Println(p(m))
 }
 
 // this handles wallet events, like when someone send you money in chat
-func (b *Bot) walletHandler(m stellar1.PaymentDetailsLocal) {
+func (b *bot) walletHandler(m stellar1.PaymentDetailsLocal) {
 	if m.Summary.StatusSimplified > 0 {
 		log.Printf("%s Payment of %s Received from %s txn %s !!!!\n", m.Summary.StatusDescription, m.Summary.AmountDescription, m.Summary.FromUsername, m.Summary.Id)
 	}
 }
 
 // this handles all errors returned from the keybase binary
-func (b *Bot) errHandler(m error) {
+func (b *bot) errHandler(m error) {
 	log.Println("---[ error ]---")
 	log.Println(p(m))
 }
