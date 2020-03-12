@@ -23,7 +23,7 @@ func (b *bot) urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []strin
 		return
 	}
 	queryText := strings.Join(message[1:], " ")
-	result, err := gourban.Top(queryText)
+	result, err := gourban.First(queryText)
 	if err != nil {
 		b.k.ReactByConvID(convid, mid, "Error.")
 		log.Printf("%s\n", err)
