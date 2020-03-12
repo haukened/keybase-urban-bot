@@ -1,4 +1,12 @@
 github.com/haukened/gourban v0.0.0-20200310145847-df19a0041357 h1:S4siKO9sEFRJhZoP/oMQ6tavyqfDKGFWj2xtowpc1o4=
 github.com/haukened/gourban v0.0.0-20200310145847-df19a0041357/go.mod h1:TaXhZRdYX2Nlzr1P3be8wSvDVQJmApQEw27olMLSzPA=
+github.com/haukened/gourban v0.0.0-20200312032554-b3c17a39a329 h1:1BhCkBlfeJ0eECRhiilcYiJ53JzDHVFXhdoWZd4PR2o=
+github.com/haukened/gourban v0.0.0-20200312032554-b3c17a39a329/go.mod h1:TaXhZRdYX2Nlzr1P3be8wSvDVQJmApQEw27olMLSzPA=
+github.com/haukened/gourban v0.0.0-20200312033927-2698ec891389 h1:RW4/Lbk5eHfhnXDRQ/ntlFDrbJlpirsju3N2ssncwlg=
+github.com/haukened/gourban v0.0.0-20200312033927-2698ec891389/go.mod h1:TaXhZRdYX2Nlzr1P3be8wSvDVQJmApQEw27olMLSzPA=
+github.com/haukened/gourban v0.0.0-20200312193322-099d21b0713f h1:8EWLmGg8HLuC1xOTX+R4UaDxGwgi365gcYwEzkyzE/g=
+github.com/haukened/gourban v0.0.0-20200312193322-099d21b0713f/go.mod h1:TaXhZRdYX2Nlzr1P3be8wSvDVQJmApQEw27olMLSzPA=
 samhofi.us/x/keybase v0.0.0-20200308154734-5a7a6d753885 h1:8LDliNV8/3KnQvqYMby6tgegZT4+19zGz9ysi0UMqus=
 samhofi.us/x/keybase v0.0.0-20200308154734-5a7a6d753885/go.mod h1:fcva80IUFyWcHtV4bBSzgKg07K6Rvuvi3GtGCLNGkyE=
+samhofi.us/x/keybase v0.0.0-20200312153536-07f5168a6a29 h1:+yj8+O6C56QM8WGZYtDwBFxkdPT4UgVU+O9W+6N85kk=
+samhofi.us/x/keybase v0.0.0-20200312153536-07f5168a6a29/go.mod h1:fcva80IUFyWcHtV4bBSzgKg07K6Rvuvi3GtGCLNGkyE=

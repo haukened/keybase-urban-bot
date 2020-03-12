@@ -3,6 +3,6 @@ module urbandictionary
 go 1.13
 
 require (
-	github.com/haukened/gourban v0.0.0-20200310145847-df19a0041357
-	samhofi.us/x/keybase v0.0.0-20200308154734-5a7a6d753885
+	github.com/haukened/gourban v0.0.0-20200312193322-099d21b0713f
+	samhofi.us/x/keybase v0.0.0-20200312153536-07f5168a6a29
 )
