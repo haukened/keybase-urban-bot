@@ -9,12 +9,6 @@ import (
 	"samhofi.us/x/keybase/types/chat1"
 )
 
-// Ping sends Pong! as a reply
-func (b *bot) ping(convid chat1.ConvIDStr) {
-	Debug("Ping received in %s", convid)
-	b.k.SendMessageByConvID(convid, "Pong!")
-}
-
 // Urban performs and returns an urbandictionary.com lookup
 func (b *bot) urban(convid chat1.ConvIDStr, mid chat1.MessageID, message []string, membersType string) {
 	Debug("Urban received in %s", convid)

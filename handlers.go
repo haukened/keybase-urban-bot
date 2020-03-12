@@ -61,8 +61,6 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 		thisCommand := strings.ToLower(strings.Replace(words[0], "!", "", 1))
 		// decide if this is askind for extended commands
 		switch thisCommand {
-		case "ping":
-			b.ping(m.ConvID)
 		case "urban":
 			fallthrough
 		case "urbandictionary":
