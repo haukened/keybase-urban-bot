@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"log"
 	"os"
@@ -40,4 +41,10 @@ func parseArgs(args []string) error {
 		log.Println("Debugging enabled.")
 	}
 	return nil
+}
+
+// this JSON pretty prints errors and debug
+func p(b interface{}) string {
+	s, _ := json.MarshalIndent(b, "", "  ")
+	return string(s)
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"strings"
@@ -94,10 +93,4 @@ func (b *bot) walletHandler(m stellar1.PaymentDetailsLocal) {
 func (b *bot) errHandler(m error) {
 	log.Println("---[ error ]---")
 	log.Println(p(m))
-}
-
-// this JSON pretty prints errors and debug
-func p(b interface{}) string {
-	s, _ := json.MarshalIndent(b, "", "  ")
-	return string(s)
 }
