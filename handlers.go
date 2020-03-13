@@ -75,7 +75,7 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 func (b *bot) convHandler(m chat1.ConvSummary) {
 	switch m.Channel.MembersType {
 	case "team":
-		Debug("Added to new team: @%s#%s (%s) Sending welcome message", m.Channel.Name, m.Channel.TopicName, m.Id)
+		Debug("Added to new team: @%s (%s) Sending welcome message", m.Channel.Name, m.Id)
 	case "impteamnative":
 		Debug("New conversation found %s (%s) Sending welcome message", m.Channel.Name, m.Id)
 	default:
