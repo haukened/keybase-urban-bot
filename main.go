@@ -36,6 +36,25 @@ func newBot() *bot {
 	return &b
 }
 
+// this handles setting up command advertisements and aliases
+func (b *bot) registerCommands() {
+	opts := keybase.AdvertiseCommandsOptions{
+		Advertisements: []chat1.AdvertiseCommandAPIParam{
+			{
+				Typ: "public",
+				Commands: []chat1.UserBotCommandInput{
+					{
+						Name:        "urban",
+						Description: "Perform an urbandictionary lookup",
+						Usage:       "<word(s)>",
+					},
+				},
+			},
+		},
+	}
+	b.k.AdvertiseCommands(opts)
+}
+
 // run performs a proxy main function
 func (b *bot) run(args []string) error {
 	// parse the arguments
@@ -43,8 +62,9 @@ func (b *bot) run(args []string) error {
 	if err != nil {
 		return err
 	}
-	//b.SetOptions()
+
 	b.registerHandlers()
+	b.registerCommands()
 
 	log.Println("Starting...")
 	b.k.Run(b.handlers, &b.opts)
