@@ -73,8 +73,15 @@ func (b *bot) chatHandler(m chat1.MsgSummary) {
 // handle conversations (this fires when a new conversation is initiated)
 // i.e. when someone opens a conversation to you but hasn't sent a message yet
 func (b *bot) convHandler(m chat1.ConvSummary) {
-	log.Println("---[ conv ]---")
-	log.Println(p(m))
+	switch m.Channel.MembersType {
+	case "team":
+		Debug("Added to new team: @%s#%s (%s) Sending welcome message", m.Channel.Name, m.Channel.TopicName, m.Id)
+	case "impteamnative":
+		Debug("New conversation found %s (%s) Sending welcome message", m.Channel.Name, m.Id)
+	default:
+		Debug("New convID found %s, sending welcome message.", m.Id)
+	}
+	b.k.SendMessageByConvID(m.Id, "Hello there!! I'm the urbandictionary bot, made by @haukened\nI can perform urbandictionary.com lookups right here in this chat!\nI can be activated in 2 ways:\n  1. `@urbandictionary <word or phrase>`\n  2.`!urban <word or phrase>`\nI also accept donations to offset hosting costs,\n just send some XLM to my wallet if you feel like it by typing `+5XLM@urbandictionary`")
 }
 
 // this handles wallet events, like when someone send you money in chat
