@@ -9,13 +9,11 @@ on:
       - v1.*
     paths-ignore:
       - 'README.md'
-      - '.github/**'
       - '.gitignore'
   pull_request:
     branches: [ master ]
     paths-ignore:
       - 'README.md'
-      - '.github/**'
       - '.gitignore'
 
 jobs:
