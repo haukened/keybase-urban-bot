@@ -78,7 +78,7 @@ jobs:
       id: upload_docker
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: haukeness/keybase-jitsi-bot
+        name: haukeness/keybase-urban-bot
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tag_semver: true
