@@ -5,7 +5,7 @@ COPY . .
 RUN go get -d -v
 RUN go build -o app .
 
-FROM keybaseio/client:latest
+FROM keybaseio/client:stable-slim
 
 WORKDIR /home/keybase
 COPY --from=builder /go/src/app/app .
