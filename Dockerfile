@@ -10,4 +10,5 @@ FROM keybaseio/client:stable-slim
 WORKDIR /home/keybase
 COPY --from=builder /go/src/app/app .
 ENV KEYBASE_SERVICE=1
+CMD ["/provision.sh"]
 CMD ["./app"]
