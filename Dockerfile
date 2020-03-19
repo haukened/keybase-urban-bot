@@ -12,5 +12,5 @@ COPY --from=builder /go/src/app/app .
 COPY --from=builder /go/src/app/provision.sh .
 ENV KEYBASE_SERVICE=1
 RUN chmod +x provision.sh
-CMD ["/provision.sh"]
+RUN ./provision.sh
 CMD ["./app"]
